@@ -52,7 +52,7 @@ let storySlider = new Swiper('.story__body', {
 		},
 		1600: {
 			slidesPerView: 5,
-			spaceBetween: 45,
+			spaceBetween: 15,
 		},
 	},
 });
@@ -102,7 +102,7 @@ let productSlider = new Swiper('.slider-product', {
 	breakpoints: {
 		320: {
 			slidesPerView: 1,
-			spaceBetween: 30,
+			spaceBetween: 15,
 			centeredSlides: true,
 		},
 		550: {
@@ -138,7 +138,7 @@ let feedbackProductSlider = new Swiper('.feedback-product__body', {
 	breakpoints: {
 		320: {
 			slidesPerView: 1,
-			spaceBetween: 0,
+			spaceBetween: 14,
 		},
 		768: {
 			slidesPerView: 2,
@@ -896,6 +896,23 @@ function selects_update_all() {
 		for (let index = 0; index < selects.length; index++) {
 			const select = selects[index];
 			select_item(select);
+		}
+	}
+}
+
+let currentScroll;
+window.addEventListener('scroll', scroll_scroll);
+function scroll_scroll() {
+	let src_value = currentScroll = pageYOffset;
+	let wrapper = document.querySelector('.wrapper');
+	let header = document.querySelector('header.header');
+	if (header !== null) {
+		if (src_value > 10) {
+			wrapper.classList.add('_scroll');
+			header.classList.add('_scroll');
+		} else {
+			wrapper.classList.remove('_scroll');
+			header.classList.remove('_scroll');
 		}
 	}
 }
